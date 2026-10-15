@@ -9,8 +9,8 @@
 
     --bg-overlay: #ffffff73;
 
-    --bg-button-primaria: linear-gradient(135deg, #FFEEA0; #E98E28;);
-    --bg-button-gradient-secundaria: lienar-gradient(135deg, #E98E28; #FFEEA0;);
+    --cor-gradient-primaria: linear-gradient(135deg, #FFEEA0, #E98E28);
+    --cor-gradient-secundaria: lienar-gradient(135deg, #E98E28, #FFEEA0);
 
     --bg-button-primaria: transparent;
 
@@ -50,11 +50,22 @@ header h1 a{
     font-size: 1.5rem;
 }
 
-header ul{
+.logo{
+    color: var(--texto-cor-primaria);
+    font-size: 1.5rem;
+    font-weight: 300;
+    display: inline-block;
+
+    transform: scaleX(1.4);
+    transform-origin: left;
+}
+
+header, header ul{
     display: flex;
     gap: 1rem;
-    padding: 0;
-    margin: 0;
+    
+    justify-content: space-between;
+    align-items: center;
 }
 
 header ul li a{
@@ -76,7 +87,23 @@ header ul li a{
 }
 
 .hero-section h2{
-    font-size: clamp();
+    font-size: clamp(3rem, 5vw , 5rem);
+    color: var(--texto-cor-primaria);
+    margin-bottom: 1rem;
+}
+
+.hero-section h2 span{
+    display: inline-block;
+    background-image: var(--cor-gradient-primaria);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero-section p{
+    color: var(--texto-cor-primaria);
+    line-height: 1.5;
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
 }
 
 img{
