@@ -26,6 +26,10 @@
     text-decoration: none;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 body{
     background-color: var(--bg-primario);
     font-family: var(--fonte-primaria); color: var(--texto-cor-primaria);
@@ -47,13 +51,32 @@ header h1 a{
 }
 
 header ul{
+    display: flex;
     gap: 1rem;
+    padding: 0;
+    margin: 0;
 }
 
 header ul li a{
     font-size: 1.125rem;
     color: var(--texto-cor-primaria);
     font-weight: 500;
+}
+
+.hero-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    height: 90dvh;
+
+    padding: .5rem;
+}
+
+.hero-section h2{
+    font-size: clamp();
 }
 
 img{
