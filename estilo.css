@@ -2,15 +2,15 @@
     --fonte-primaria: "Inter", sans-serif;
 
     --texto-cor-primaria: #563D18;
-    --texto-cor-secundaria: #E5800D;
 
     --bg-primario: #FEFFDC;
-    --bg-secundario: #FFFFFF;
+    --bg-secundario: #FEFFED;
 
     --bg-overlay: #ffffff73;
+    --bg-overlay-secundaria: #00000087;
 
     --cor-gradient-primaria: linear-gradient(135deg, #FFEEA0, #E98E28);
-    --cor-gradient-secundaria: lienar-gradient(135deg, #E98E28, #FFEEA0);
+    --cor-gradient-secundaria: linear-gradient(135deg, #E98E28, #FFEEA0);
 
     --bg-button-primaria: transparent;
 
@@ -32,46 +32,64 @@ html{
 
 body{
     background-color: var(--bg-primario);
-    font-family: var(--fonte-primaria); color: var(--texto-cor-primaria);
+    font-family: var(--fonte-primaria);
+}
+
+h2{
+    color: var(--texto-cor-primaria);
+}
+
+p{
+    color: var(--texto-cor-primaria);
 }
 
 header{
-    padding: 1.5rem;
-    background-color: var(--bg-overlay);
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+
+    background-color: var(--bg-overlay);
+    padding: .5rem 1rem;
+    box-shadow: 0px 3px 14px rgba(0, 0, 0, 0.29);
+
     position: sticky;
     top: 0;
-}
 
-header h1 a{
-    color: var(--texto-cor-primaria);
+
+ & h1{
+    font-weight: 700;
+
+
+ & a{
     font-size: 1.5rem;
-}
-
-.logo{
     color: var(--texto-cor-primaria);
-    font-size: 1.5rem;
-    font-weight: 300;
-    display: inline-block;
+  }
+ }
 
-    transform: scaleX(1.4);
-    transform-origin: left;
-}
-
-header, header ul{
+ & ul{
     display: flex;
-    gap: 1rem;
-    
-    justify-content: space-between;
-    align-items: center;
-}
+    gap: 0.5rem;
 
-header ul li a{
-    font-size: 1.125rem;
+
+ & a{
     color: var(--texto-cor-primaria);
     font-weight: 500;
+    transition: all 0.3s ease-in-out;
+    padding: 0.5rem;
+
+
+&:hover {
+    color: black;
+      }
+    }
+  }
+}
+
+span{
+    background-image: var(--cor-gradient-primaria);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 .hero-section{
@@ -81,31 +99,158 @@ header ul li a{
     justify-content: center;
 
     text-align: center;
-    height: 90dvh;
+    height: 90vh;
+    padding: 1rem;
 
-    padding: .5rem;
-}
 
-.hero-section h2{
-    font-size: clamp(3rem, 5vw , 5rem);
-    color: var(--texto-cor-primaria);
+& h2{
+    font-size: clamp(3rem, 5vw, 5rem);
     margin-bottom: 1rem;
 }
 
-.hero-section h2 span{
-    display: inline-block;
-    background-image: var(--cor-gradient-primaria);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-}
-
-.hero-section p{
-    color: var(--texto-cor-primaria);
+& p{
+    font-size: 1.125rem, 3vw, 1.5rem;
     line-height: 1.5;
-    font-size: clamp(1.25rem, 3vw, 1.5rem);
 }
 
-img{
+& ul{
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 37.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+
+& li:first-child a{
+    background-image: var(--cor-gradient-primaria);
+    color: var(--bg-primario);
+    font-weight: 600;
+}
+
+& li:last-child a {
+   position: relative;
+   background-color: transparent;
+   font-weight: 600;
+
+   background-image: var(--cor-gradient-secundaria);
+   background-clip: text;
+   -webkit-background-clip: text;
+   color: transparent;
+
+   &::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 3rem;
+    padding: 2px;
+    background-image: var(--cor-gradient-secundaria);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+   }
+
+   transition: opacity 0.3s ease;
+
+   &:hover{
+    opacity: 0.8;
+   }
+}
+
+& a{
+    height: 3rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3rem;
+    }
+  }
+}
+.about-section{
+    background-color: var(--bg-secundario);
+
+    & img{
+        width: 100%;
+        height: 30rem;
+        object-fit: cover;
+        border-radius: 1.5rem;
+    }
+}
+
+.about-section, projects-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 1rem;
+}
+
+.about-section h2 .projects-section h2{
+    font-size: clamp(2.5rem, 5vw, 3rem);
+    margin-bottom: 1rem;
+}
+
+.sobre-section p, .projects-section p{
+    margin-bottom: 1rem;
+    font-size: clamp(11.125rem, 3vw, 1.25rem);
+    line-height: 1.5;
+}
+
+.projects-section li{
+    margin-bottom: 1.5rem;
+    border-radius: 2rem;
+    height: 25rem;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+
+    & article {
+        background-color: var(--bg-overlay);
+        height: 100%;
+        padding: 1rem;
+        display: flex;
+        align-items: end;
+        text-align: left;
+    }
+        & h3{
+            font-size: 1.5rem;
+            color: #ffffffde;
+        }
+
+        & h3, p{
+            color: var(--bg-secundario);
+        }
+
+        & a {
+            background-color: var(--bg-overlay-secundaria);
+            color: var(--bg-overlay-secundaria);
+            height: 3rem;
+            width: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 3rem;
+      }
+}
+
+.projects-section li:first-child {
+    background-image: url(img/proa.jpg);
+}
+
+.projects-section li:nth-child {
+    background-image: url(img/lar\ para\ pets.jpg);
+}
+
+.projects-section li:last-child {
+    background-image: url(img/regando\ o\ futuro.jpg);
+}
+
+img {
     max-width: 100%;
 }
+
+
