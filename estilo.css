@@ -2,6 +2,7 @@
     --fonte-primaria: "Inter", sans-serif;
 
     --texto-cor-primaria: #563D18;
+    --texto-cor-secundaria: #877054;
 
     --bg-primario: #FEFFDC;
     --bg-secundario: #FEFFED;
@@ -54,16 +55,41 @@ header{
 
     position: sticky;
     top: 0;
-
+    width: 100%;
+    z-index: 1000;
 
  & h1{
-    font-weight: 700;
+    font-weight: 300;
 
 
  & a{
     font-size: 1.5rem;
     color: var(--texto-cor-primaria);
   }
+ }
+
+ h2 span{
+    background: var(--cor-gradient-primaria);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: gradient 1s ease-in-out infinite;
+    animation-direction: alternate;
+ }
+
+ @keyframes gradient {
+    0% {
+        background-position: 0% 25%
+    }
+
+    100%{
+        background-position: 100% 50%
+    }
+ }
+
+ section {
+    padding: 6rem 1rem;
+    text-align: center;
  }
 
  & ul{
@@ -111,6 +137,29 @@ span{
 & p{
     font-size: 1.125rem, 3vw, 1.5rem;
     line-height: 1.5;
+    padding: 3rem;
+    font-weight: 450;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 3rem;
+    border-radius: 3rem;
+}
+
+.btn-primary {
+    background-color: var(--bg-primario);
+    color: var(--texto-cor-primaria);
+}
+
+.btn-secondary{
+    background-color: var(--bg-secundario);
+    color: var(--texto-cor-primaria);
+    border: var(--borda-button);
+
 }
 
 & ul{
@@ -169,17 +218,79 @@ span{
   }
 }
 .about-section{
-    background-color: var(--bg-secundario);
+    background-color: var(--bg-overlay);
+    border-radius: 2rem;
+    padding: 3rem 2rem;
+    max-width: 48rem;
+    margin: 2rem auto;
+
+    box-shadow: 0 8px 24px rgba(96, 95, 95, 0.5);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+
+    width: 90%;
+    max-width: 48rem;
+    margin: 2rem auto;
+
+    & .about-text {
+        max-width: 42rem;
+
+        & h2{
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1.5rem;
+            color: var(--texto-cor-primaria);
+            padding: 2rem;
+        }
+
+        & p{
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            font-size: 1.125rem;
+            color: var(--texto-cor-secundaria);
+        }
+    }
 
     & img{
         width: 100%;
+        max-width: 30rem;
         height: 30rem;
         object-fit: cover;
-        border-radius: 1.5rem;
+        border-radius: 2rem;
+        padding: 1rem;
     }
 }
 
-.about-section, projects-section {
+.projects-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 1.5rem;
+    position: relative;
+    background-color: var(--bg-primario);
+
+    & h2{
+        font-size: 3rem;
+        margin-bottom: 2rem;
+        color: var(--texto-cor-primaria);
+         text-shadow: 0px 0px 4px rgba(96, 95, 95, 0.5);
+    }
+
+    & p{
+        max-width: 38rem;
+        margin-bottom: 3rem;
+        font-size: clamp(1rem, 2vw, 1.125rem);
+        line-height: 1.6;
+        font-weight: 500;
+        color: #563D18;
+    }
+}
+
+.about-section{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -188,15 +299,29 @@ span{
     padding: 6rem 1rem;
 }
 
-.about-section h2 .projects-section h2{
-    font-size: clamp(2.5rem, 5vw, 3rem);
-    margin-bottom: 1rem;
+.about-section h2 {
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    margin-bottom: 2rem;
+    color: var(--texto-cor-primaria);
 }
 
-.sobre-section p, .projects-section p{
-    margin-bottom: 1rem;
-    font-size: clamp(11.125rem, 3vw, 1.25rem);
-    line-height: 1.5;
+.about-section p{
+    max-width: 38rem;
+    margin-bottom: 3rem;
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    line-height: 1.6;
+    color: var(--texto-cor-primaria);
+    font-weight: 400;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
 .projects-section li{
@@ -208,7 +333,6 @@ span{
     background-position: center;
 
     & article {
-        background-color: var(--bg-overlay);
         height: 100%;
         padding: 1rem;
         display: flex;
@@ -217,36 +341,346 @@ span{
     }
         & h3{
             font-size: 1.5rem;
-            color: #ffffffde;
         }
 
         & h3, p{
             color: var(--bg-secundario);
-        }
+      }
 
-        & a {
-            background-color: var(--bg-overlay-secundaria);
-            color: var(--bg-overlay-secundaria);
-            height: 3rem;
-            width: 100%;
+}
 
+.projects-section{
+
+ & .card-proa{
+    background-image: url(img/proa.jpg);
+     position: relative;
+     padding-top: 3rem;
+    width: 100%;
+    height: 420px;
+    border-radius: 2rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(96, 95, 95, 0.5);
+
+    background-size: cover;
+    background-position: center;
+
+    &::before{
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.1)30%, rgba(0, 0, 0, 0.75)80%, rgba(0, 0, 0, 0.9)100%);
+        z-index: 1;
+    }
+
+    & > * {
+        position: relative;
+        z-index: 2;
+    }
+
+    & h3{
+        color: white;
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    & p{
+        color: #f0f0f0;
+        font-size: 0.95rem;
+        line-height: 1.4;
+        margin-bottom: 1.5rem;
+        text-align: left;
+    }
+
+    & a.btn-saiba-mais {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 0.75rem 1.5rem;
+        background-color: transparent;
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        border-radius: 3rem;
+        color: white;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+
+    &:hover{
+        background-color: #ffffff;
+        color: #111111;
+       }
+    }
+}
+
+ & .card-pets {
+    background-image: url(img/lar\ para\ pets.jpg);
+     position: relative;
+    width: 100%;
+    height: 420px;
+    border-radius: 2rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(96, 95, 95, 0.5);
+
+    background-size: cover;
+    background-position: center;
+
+    &::before{
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.1)30%, rgba(0, 0, 0, 0.75)80%, rgba(0, 0, 0, 0.9)100%);
+        z-index: 1;
+    }
+
+    & > * {
+        position: relative;
+        z-index: 2;
+    }
+
+    & h3{
+        color: white;
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    & p{
+        color: #f0f0f0;
+        font-size: 0.95rem;
+        line-height: 1.4;
+        margin-bottom: 1.5rem;
+        text-align: left;
+    }
+
+    & a.btn-saiba-mais {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 0.75rem 1.5rem;
+        background-color: transparent;
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        border-radius: 3rem;
+        color: white;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+
+    &:hover{
+        background-color: #ffffff;
+        color: #111111;
+       }
+    }
+}
+
+ & .card-regando {
+    background-image: url(img/regando\ o\ futuro.jpg);
+     position: relative;
+    width: 100%;
+    height: 420px;
+    border-radius: 2rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(96, 95, 95, 0.5);
+
+    background-size: cover;
+    background-position: center;
+
+    &::before{
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.1)30%, rgba(0, 0, 0, 0.75)80%, rgba(0, 0, 0, 0.9)100%);
+        z-index: 1;
+    }
+
+    & > * {
+        position: relative;
+        z-index: 2;
+    }
+
+    & h3{
+        color: white;
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    & p{
+        color: #f0f0f0;
+        font-size: 0.95rem;
+        line-height: 1.4;
+        margin-bottom: 1.5rem;
+        text-align: left;
+    }
+
+    & a.btn-saiba-mais {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 0.75rem 1.5rem;
+        background-color: transparent;
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        border-radius: 3rem;
+        color: white;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+
+    &:hover{
+        background-color: #ffffff;
+        color: #111111;
+      }
+    }
+  }
+}
+
+.contact-section, form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    padding: 4rem 1.5rem;
+
+    & h2, .contact-text{
+        text-align: center;
+        justify-content: center;
+        padding: 2rem;
+        font-size: 2rem;
+    }
+
+    & p, .contact-text{
+        text-align: center;
+        justify-content: center;
+        font-weight: 500;
+    }
+}
+
+.contact-form, .contact-card{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 32rem;
+    background-color: var(--bg-overlay);
+    padding: 2.5rem;
+    border-radius: 2rem;
+    box-shadow: 0 10px 30px rgba(96, 95, 95, 0.5);
+    text-align: left;
+    margin: 0 auto;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
+    width: 100%;
+
+    & label{
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--texto-cor-primaria);
+        margin-bottom: 0.5rem;
+    }
+
+    & input, & textarea{
+        width: 100%;
+        padding: 0.85rem 1rem;
+        border: 2px solid;
+        border-radius: 1rem;
+        background-color: var(--bg-secundario);
+        font-size: 1rem;
+        color: var(--texto-cor-primaria);
+        outline: none;
+        transition: border-color 0.3s ease;
+    }
+
+    &:focus{
+        border-color: var(--bg-primario);
+    }
+}
+
+& textarea{
+    resize: vertical;
+    min-height: 120px;
+}
+
+.btn-enviar{
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1rem;
+    background-color: var(--texto-cor-primaria);
+    color: var(--bg-primario);
+    border: none;
+    border-radius: 3rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+
+    &:hover{
+        opacity: 0.9;
+    }
+}
+
+footer{
+    background-color: var(--bg-overlay);
+    padding: 1rem;
+    color: var(--texto-cor-secundaria);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1rem;
+
+    & ul{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        & a{
             display: flex;
             align-items: center;
-            justify-content: center;
-            border-radius: 3rem;
-      }
+            gap: .25rem;
+            color: var(--texto-cor-primaria);
+        }
+    }
 }
 
-.projects-section li:first-child {
-    background-image: url(img/proa.jpg);
+@media screen and (min-width: 48rem;) {
+    .hero-section {
+        & ul{
+            flex-direction: row;
+            justify-content: center
+
+            & li{
+                width: 100%;
+            }
+        }
+    }
 }
 
-.projects-section li:nth-child {
-    background-image: url(img/lar\ para\ pets.jpg);
-}
-
-.projects-section li:last-child {
-    background-image: url(img/regando\ o\ futuro.jpg);
+.about-section{
+    ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1rem;
+        padding-top: 3rem;
+    }
 }
 
 img {
