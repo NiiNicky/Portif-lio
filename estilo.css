@@ -717,13 +717,35 @@ footer{
                 max-width: none;
             }
 }
+
+.about-section{
+    display: flex;
+    flex-direction: row !important;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+}
+& .about-text{
+    text-align: left !important;
+    flex: 1;
+    max-width: 35rem;
+}
+
+& img{
+    flex: 1;
+    max-width: 26rem;
+}
 }
 
 .about-section{
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   gap: 4rem;
+    width: 100%;
+   padding: 3rem;
+   box-sizing: border-box;
+   margin-bottom: 3rem;
 }
 
 .hero-section ul{
@@ -745,23 +767,6 @@ footer{
         width: 100%;
         text-align: center;
         box-sizing: border-box;
-    }
-}
-
-.projects-section{
-    ul{
-        display: grid;
-        grid-template-columns: 15fr 0fr;
-        gap: 1rem;
-        margin-top: 2rem;
-    }
-}
-
-@media screen and(min-width: 75rem){
-    .projects-section{
-        ul{
-            grid-template-columns: repeat(3, 1fr);
-        }
     }
 }
 
