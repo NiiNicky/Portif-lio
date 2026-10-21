@@ -31,6 +31,40 @@ html{
     scroll-behavior: smooth;
 }
 
+:root:has(#dark-mode:checked) {
+    --bg-primario: #241910;
+    --bg-overlay:  #00000073;
+
+    --cor-texto-primaria: #FFD390;
+    --cor-texto-secundaria: #D4C8B9;
+
+}
+
+#dark-mode{
+    display: none;
+}
+
+.dark-mode-label {
+    cursor: pointer;
+    color: var(--cor-texto-primaria);
+}
+
+i.fa-moon {
+    display: inline-block;
+}
+
+#dark-mode:checked + label i.fa-moon {
+    display: none;
+}
+
+i.fa-sun{
+    display: none;
+}
+
+#dark-mode:checked + label i.fa-sun{
+    display: inline-block;
+}
+
 body{
     background-color: var(--bg-primario);
     font-family: var(--fonte-primaria);
@@ -73,8 +107,9 @@ header{
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    animation: gradient 1s ease-in-out infinite;
-    animation-direction: alternate;
+    background-size: 300% 300%;
+    background-position: 0% 25%;
+    animation: gradient 3s linear 0s infinite normal none;
  }
 
  @keyframes gradient {
@@ -132,6 +167,9 @@ span{
 & h2{
     font-size: clamp(3rem, 5vw, 5rem);
     margin-bottom: 1rem;
+    max-width: 20ch;
+    animation: alternate fadeIn 1s ease-in-out both;
+    animation-delay: 200ms;
 }
 
 & p{
@@ -139,6 +177,8 @@ span{
     line-height: 1.5;
     padding: 3rem;
     font-weight: 450;
+    animation: alternate fadeIn 1s ease-in-out both;
+    animation-delay: 200ms;
 }
 
 .btn {
@@ -169,6 +209,8 @@ span{
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    animation: alternate fadeIn 1s ease-in-out both;
+    animation-delay: 400ms;
 
 
 & li:first-child a{
@@ -195,7 +237,7 @@ span{
     position: absolute;
     inset: 0;
     border-radius: 3rem;
-    padding: 3px;
+    padding: 2px;
     background-image: var(--cor-gradient-secundaria);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -242,7 +284,7 @@ span{
         max-width: 42rem;
 
         & h2{
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(2.5rem, 4vw, 2.5rem);
             margin-bottom: 1.5rem;
             color: var(--texto-cor-primaria);
             padding: 2rem;
@@ -678,11 +720,65 @@ footer{
 }
 
 .about-section{
-    ul {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 4rem;
+}
+
+.projects-section{
+    ul{
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 15fr 0fr;
         gap: 1rem;
-        padding-top: 3rem;
+        margin-top: 2rem;
+    }
+}
+
+@media screen and(min-width: 75rem){
+    .projects-section{
+        ul{
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}
+
+.contact {
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+
+    & div p{
+        margin: 1rem 0;
+    }
+}
+
+@keyframes gradient{
+    0% {
+        background-position: 0% 25%;
+    }
+    25% {
+        background-position: 50% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    75% {
+        background-position: 50% 50%;
+    }
+    100% {
+        background-position: 0% 25%;
+    }
+}
+
+@keyframes fadeIn {
+    from{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
